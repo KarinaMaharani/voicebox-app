@@ -143,6 +143,30 @@
     .os-notice p { font-size: 0.8125rem; color: var(--muted); line-height: 1.5; }
     .os-notice p strong { color: var(--fg); }
 
+    /* ── About / explainer ── */
+    .about p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Canva embed ── */
+    .canva-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .canva-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* ── Section label ── */
     .section-label {
       font-size: 0.625rem;
@@ -193,12 +217,11 @@
     .step-num {
       width: 22px; height: 22px;
       border-radius: 50%;
-      background: var(--surface);
-      box-shadow: 0 0 0 1px var(--border);
+      background: #2e6f68;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.6875rem;
       font-weight: 700;
-      color: var(--muted);
+      color: #ffffff;
       flex-shrink: 0;
       margin-top: 1px;
     }
@@ -274,6 +297,21 @@
         </svg>
       </span>
       <p><strong>Windows only for now.</strong> macOS and Linux builds are planned. Star the repo to get notified.</p>
+    </div>
+
+    <div class="about">
+      <div class="section-label">About the project</div>
+      <p>VoiceBox is a desktop accessibility tool built for people who have lost their voice — whether from dysphonia, aphonia, ALS, or laryngectomy. It watches your lip movements through your webcam and uses AI to reconstruct the words you're trying to say, then speaks them aloud in real time. No internet required. Everything runs locally on your machine.</p>
+    </div>
+
+    <div class="canva-wrap">
+      <iframe
+        src="https://canva.link/at2bh8iddau6dhl"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen"
+        loading="lazy"
+        title="VoiceBox project presentation">
+      </iframe>
     </div>
 
     <div>
