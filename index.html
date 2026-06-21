@@ -53,12 +53,6 @@
       text-decoration: none;
       color: var(--fg);
     }
-    .logo-img {
-      width: 24px; height: 24px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, var(--primary), #1d4e49);
-      flex-shrink: 0;
-    }
     .logo-name {
       font-size: 1.125rem;
       font-weight: 600;
@@ -145,7 +139,7 @@
       padding: 14px 18px;
       box-shadow: 0 0 0 1px var(--border);
     }
-    .os-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .os-icon { display: flex; flex-shrink: 0; color: var(--primary); }
     .os-notice p { font-size: 0.8125rem; color: var(--muted); line-height: 1.5; }
     .os-notice p strong { color: var(--fg); }
 
@@ -230,18 +224,14 @@
     }
     .req-val { font-size: 0.8125rem; font-weight: 500; }
 
-    /* ── Footer ── */
-    footer {
-      padding: 20px 24px 28px;
-      border-top: 1px solid var(--border);
+    /* ── Contact note ── */
+    .contact-note {
       font-size: 0.75rem;
       color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding-top: 4px;
     }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--fg); }
+    .contact-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .contact-note a:hover { color: var(--fg); }
   </style>
 </head>
 <body>
@@ -249,7 +239,6 @@
 
   <header>
     <a class="logo-group" href="#">
-      <div class="logo-img"></div>
       <span class="logo-name">VoiceBox</span>
       <span class="logo-badge">Download</span>
     </a>
@@ -279,7 +268,11 @@
     </div>
 
     <div class="os-notice">
-      <span class="os-icon">🪟</span>
+      <span class="os-icon">
+        <svg width="20" height="20" viewBox="0 0 452.986 452.986" fill="currentColor" aria-hidden="true">
+          <path d="M165.265,53.107L21.689,81.753v132.531l143.575-2.416V53.107 M431.297,245.583l-233.18-3.991v164.822l233.18,46.571V245.583 M165.265,241.097l-143.575-2.438v132.509l143.575,28.668V241.097 M431.297,0l-233.18,46.528v164.822l233.18-3.969V0"/>
+        </svg>
+      </span>
       <p><strong>Windows only for now.</strong> macOS and Linux builds are planned. Star the repo to get notified.</p>
     </div>
 
@@ -341,12 +334,9 @@
       </div>
     </div>
 
-  </main>
+    <p class="contact-note">For further inquiries about this project, <a href="https://karinamaharani.github.io/contact" target="_blank" rel="noopener">get in touch ↗</a></p>
 
-  <footer>
-    <span>Free &amp; open source</span>
-    <a href="https://github.com/KarinaMaharani/voicebox-app" target="_blank" rel="noopener">KarinaMaharani/voicebox-app ↗</a>
-  </footer>
+  </main>
 
 </div>
 </body>
