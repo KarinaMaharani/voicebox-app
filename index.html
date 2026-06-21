@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceBox — Download</title>
+  <meta name="description" content="VoiceBox uses AI lip-reading and audio processing to restore speech for people with dysphonia or aphasia. Free download for Windows, macOS, and Linux." />
+  <meta property="og:title" content="VoiceBox — AI Speech Restoration" />
+  <meta property="og:description" content="Read lip movements. Restore speech. No cloud required." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #141414;
+      --card:      #1a1a1a;
+      --border:    rgba(255,255,255,0.08);
+      --muted:     #555;
+      --text:      #e8e8e8;
+      --text-dim:  #888;
+      --accent:    #7c3aed;
+      --accent-2:  #4f46e5;
+      --accent-lo: rgba(124,58,237,0.12);
+      --green:     #10b981;
+      --radius:    14px;
+      --transition: 0.18s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo-icon {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 16px rgba(124,58,237,0.45);
+      flex-shrink: 0;
+    }
+    .logo span { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.03em; }
+    .nav-badge {
+      font-size: 0.68rem;
+      background: var(--accent-lo);
+      color: var(--accent);
+      border: 1px solid rgba(124,58,237,0.3);
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .gh-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .gh-link:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 56px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-lo);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 24px;
+    }
+    .hero-pill::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* ── Download buttons ── */
+    .download-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .dl-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .dl-btn .os-icon { font-size: 1.2rem; }
+    .dl-btn .label-stack { display: flex; flex-direction: column; text-align: left; }
+    .dl-btn .label-stack .sub { font-size: 0.68rem; font-weight: 400; color: var(--muted); }
+    .dl-btn:hover { background: #222; border-color: rgba(255,255,255,0.15); transform: translateY(-1px); }
+    .dl-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      box-shadow: 0 4px 24px rgba(124,58,237,0.35);
+    }
+    .dl-btn.primary:hover { filter: brightness(1.08); }
+    .dl-btn.detected::after {
+      content: 'Your OS';
+      position: absolute;
+      top: -8px; right: -4px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+    .dl-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── How it works ── */
+    .section { padding: 64px 0; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .step-num {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--accent-lo);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .step-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .step-card p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* ── Features ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      display: flex;
+      gap: 14px;
+    }
+    .feature-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .feature-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+    .feature-card p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* ── Install instructions ── */
+    .install-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .tab-btn.active {
+      background: var(--card);
+      border-color: rgba(255,255,255,0.15);
+      color: var(--text);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .install-steps {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .install-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .install-step:last-child { border-bottom: none; }
+    .step-badge {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .install-step p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+    .install-step p strong { color: var(--text); }
+    code {
+      background: #222;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1px 6px;
+      font-size: 0.82em;
+      font-family: 'SF Mono', 'Consolas', monospace;
+      color: #a5b4fc;
+    }
+
+    /* ── Requirements ── */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .req-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .req-card .req-os { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .req-item { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 5px; }
+    .req-item::before { content: '· '; color: var(--accent); }
+
+    /* ── CTA strip ── */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(79,70,229,0.08));
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      margin: 48px 0 80px;
+    }
+    .cta-strip h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .cta-strip p { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 24px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero { padding: 52px 0 40px; }
+      h1 { font-size: 2rem; }
+      .download-row { flex-direction: column; align-items: center; }
+      .dl-btn { width: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="inner">
+    <a class="logo" href="#">
+      <div class="logo-icon"></div>
+      <span>VoiceBox</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span class="nav-badge">Free &amp; Open Source</span>
+      <a class="gh-link" href="https://github.com/KarinaMaharani/voicebox-app" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49l-.01-1.71c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85.004 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-pill">Now available for desktop</div>
+    <h1>Speak with your<br><span class="highlight">mouth movements</span></h1>
+    <p class="hero-sub">
+      VoiceBox uses AI lip-reading and audio processing to predict and speak your words —
+      designed for people with dysphonia, aphonia, or other speech differences.
+      Runs entirely on your device. No cloud. No subscription.
+    </p>
+
+    <!-- Download buttons -->
+    <div class="download-row" id="download-row">
+      <a class="dl-btn" id="btn-win" href="#" data-os="win">
+        <span class="os-icon">🪟</span>
+        <span class="label-stack">
+          <span>Download for Windows</span>
+          <span class="sub">.exe installer · x64</span>
+        </span>
+      </a>
+      <a class="dl-btn" id="btn-mac" href="#" data-os="mac">
+        <span class="os-icon">🍎</span>
+        <span class="label-stack">
+          <span>Download for macOS</span>
+          <span class="sub">.dmg · Intel &amp; Apple Silicon</span>
+        </span>
+      </a>
+      <a class="dl-btn" id="btn-linux" href="#" data-os="linux">
+        <span class="os-icon">🐧</span>
+        <span class="label-stack">
+          <span>Download for Linux</span>
+          <span class="sub">.AppImage · x64</span>
+        </span>
+      </a>
+    </div>
+    <p class="dl-note">v1.0.0 · No Python or Node.js installation required · Free forever</p>
+  </div>
+</section>
+
+<!-- ── How it works ──────────────────────────────────────────────────────── -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2>Three steps to speech</h2>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Point camera at your mouth</h3>
+        <p>VoiceBox uses your webcam to track lip movements in real-time using MediaPipe face detection.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>AI reads your lips</h3>
+        <p>The Chaplin visual speech recognition model predicts words from mouth motion. Faster-Whisper handles any audible audio.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Hear your words spoken</h3>
+        <p>Tap any word to correct it. Tap the sentence to have it spoken aloud using your device's text-to-speech.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ──────────────────────────────────────────────────────────── -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2>Built for accessibility</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div>
+          <h3>Fully private</h3>
+          <p>All processing runs on your computer. No video, audio, or speech data ever leaves your device.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <div>
+          <h3>Two modes</h3>
+          <p><strong>Dysphonia:</strong> fuses lip-reading + microphone for partial voice. <strong>Aphonia:</strong> lip-reading only, no audio needed.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <div>
+          <h3>Editable predictions</h3>
+          <p>Tap any word to fix it. VoiceBox learns from your corrections and suggests them next time.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div>
+          <h3>Works offline</h3>
+          <p>No internet connection required. The AI models are bundled inside the installer.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <div>
+          <h3>AI-powered fusion</h3>
+          <p>Chaplin VSR model + Whisper transcription are combined by a fusion engine for higher accuracy.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div>
+          <h3>Quick phrases</h3>
+          <p>Tap common phrases instantly without scanning — great for fast everyday communication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── System requirements ───────────────────────────────────────────────── -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">System requirements</div>
+    <h2>What you need</h2>
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="req-os">🪟 Windows</div>
+        <div class="req-item">Windows 10 or 11 (64-bit)</div>
+        <div class="req-item">8 GB RAM minimum</div>
+        <div class="req-item">Webcam (built-in or USB)</div>
+        <div class="req-item">3 GB free disk space</div>
+        <div class="req-item">GPU optional (CPU works)</div>
+      </div>
+      <div class="req-card">
+        <div class="req-os">🍎 macOS</div>
+        <div class="req-item">macOS 12 Monterey or later</div>
+        <div class="req-item">8 GB RAM minimum</div>
+        <div class="req-item">FaceTime camera or webcam</div>
+        <div class="req-item">3 GB free disk space</div>
+        <div class="req-item">Apple Silicon runs natively</div>
+      </div>
+      <div class="req-card">
+        <div class="req-os">🐧 Linux</div>
+        <div class="req-item">Ubuntu 22.04+ or equivalent</div>
+        <div class="req-item">8 GB RAM minimum</div>
+        <div class="req-item">V4L2-compatible webcam</div>
+        <div class="req-item">3 GB free disk space</div>
+        <div class="req-item">PulseAudio or PipeWire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Install instructions ──────────────────────────────────────────────── -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Installation</div>
+    <h2>Up and running in minutes</h2>
+
+    <div class="install-tabs">
+      <button class="tab-btn active" data-tab="win">Windows</button>
+      <button class="tab-btn" data-tab="mac">macOS</button>
+      <button class="tab-btn" data-tab="linux">Linux</button>
+    </div>
+
+    <!-- Windows -->
+    <div class="tab-panel active" id="tab-win">
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="step-badge">1</div>
+          <p>Download <strong>VoiceBox-Setup-x64.exe</strong> from the button above.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">2</div>
+          <p>Double-click the installer. If Windows SmartScreen appears, click <strong>More info → Run anyway</strong> (the app is not yet code-signed).</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">3</div>
+          <p>Follow the setup wizard. VoiceBox installs to <code>C:\Program Files\VoiceBox\</code> by default.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">4</div>
+          <p>Launch <strong>VoiceBox</strong> from the Start menu or Desktop shortcut. Allow camera access when prompted.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- macOS -->
+    <div class="tab-panel" id="tab-mac">
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="step-badge">1</div>
+          <p>Download <strong>VoiceBox.dmg</strong> from the button above.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">2</div>
+          <p>Open the <code>.dmg</code> file and drag <strong>VoiceBox.app</strong> into your Applications folder.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">3</div>
+          <p>First launch: right-click VoiceBox in Applications → <strong>Open</strong> → Open (bypasses Gatekeeper for unsigned apps).</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">4</div>
+          <p>Grant camera and microphone access in <strong>System Settings → Privacy &amp; Security</strong> when prompted.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linux -->
+    <div class="tab-panel" id="tab-linux">
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="step-badge">1</div>
+          <p>Download <strong>VoiceBox-x86_64.AppImage</strong> from the button above.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">2</div>
+          <p>Make it executable: <code>chmod +x VoiceBox-x86_64.AppImage</code></p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">3</div>
+          <p>Run it: <code>./VoiceBox-x86_64.AppImage</code> — or double-click in your file manager.</p>
+        </div>
+        <div class="install-step">
+          <div class="step-badge">4</div>
+          <p>If the camera isn't detected, add yourself to the video group: <code>sudo usermod -aG video $USER</code> then log out and back in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA strip ─────────────────────────────────────────────────────────── -->
+<div class="container">
+  <div class="cta-strip">
+    <h2>Ready to try VoiceBox?</h2>
+    <p>Free, open-source, and runs entirely on your machine.</p>
+    <div class="download-row" id="cta-row">
+      <a class="dl-btn primary" id="cta-main-btn" href="#">
+        <span class="os-icon" id="cta-icon">⬇️</span>
+        <span class="label-stack">
+          <span id="cta-label">Download VoiceBox</span>
+          <span class="sub" id="cta-sub">Choose your platform above</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <p>
+      VoiceBox is free and open source.
+      &nbsp;·&nbsp;
+      <a href="https://github.com/KarinaMaharani/voicebox-app" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      Built with ❤️ for the accessibility community.
+    </p>
+  </div>
+</footer>
+
+<script>
+// ── OS detection & download links ─────────────────────────────────────────────
+// Replace these with your actual GitHub Releases URLs when you publish.
+const RELEASE_BASE = 'https://github.com/KarinaMaharani/voicebox-app/releases/latest/download';
+const DOWNLOADS = {
+  win:   { url: `${RELEASE_BASE}/VoiceBox-Setup-x64.exe`,       icon: '🪟', label: 'Download for Windows', sub: '.exe installer · x64' },
+  mac:   { url: `${RELEASE_BASE}/VoiceBox.dmg`,                  icon: '🍎', label: 'Download for macOS',   sub: '.dmg · Intel & Apple Silicon' },
+  linux: { url: `${RELEASE_BASE}/VoiceBox-x86_64.AppImage`,      icon: '🐧', label: 'Download for Linux',   sub: '.AppImage · x64' },
+};
+
+function detectOS() {
+  const ua = navigator.userAgent;
+  if (/Windows/i.test(ua)) return 'win';
+  if (/Mac|iPhone|iPad/i.test(ua)) return 'mac';
+  if (/Linux|Android/i.test(ua)) return 'linux';
+  return null;
+}
+
+function initDownloads() {
+  const detected = detectOS();
+
+  Object.entries(DOWNLOADS).forEach(([os, info]) => {
+    const btn = document.getElementById(`btn-${os}`);
+    if (!btn) return;
+    btn.href = info.url;
+    if (os === detected) {
+      btn.classList.add('detected', 'primary');
+      // Move detected button first
+      document.getElementById('download-row').prepend(btn);
+    }
+  });
+
+  // Update CTA button
+  if (detected) {
+    const d = DOWNLOADS[detected];
+    document.getElementById('cta-main-btn').href = d.url;
+    document.getElementById('cta-icon').textContent = d.icon;
+    document.getElementById('cta-label').textContent = d.label;
+    document.getElementById('cta-sub').textContent = d.sub;
+  }
+}
+
+// ── Install tab switcher ──────────────────────────────────────────────────────
+function initTabs() {
+  const detected = detectOS() || 'win';
+
+  // Activate detected OS tab
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === detected);
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === `tab-${detected}`);
+  });
+}
+
+initDownloads();
+initTabs();
+</script>
+</body>
+</html>
