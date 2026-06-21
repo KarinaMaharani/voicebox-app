@@ -1,28 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VoiceBox — Download</title>
   <meta name="description" content="AI lip-reading and speech restoration for people with dysphonia or aphonia. Free download for Windows." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Exact design tokens from the app's styles.css (.dark values) ── */
     :root {
-      --bg:          oklch(0.16 0.012 60);
-      --card:        oklch(0.22 0.012 60);
-      --surface:     oklch(0.24 0.012 60);
-      --fg:          oklch(0.96 0.008 80);
-      --muted:       oklch(0.7  0.012 65);
-      --accent:      oklch(0.78 0.13  75);
-      --accent-fg:   oklch(0.18 0.012 60);
-      --primary:     oklch(0.96 0.008 80);
-      --primary-fg:  oklch(0.18 0.012 60);
-      --border:      oklch(1 0 0 / 0.1);
-      --radius:      1.25rem;
+      --bg:         #f4eddf;
+      --card:       #ffffff;
+      --surface:    #ede6d4;
+      --fg:         #1a1c19;
+      --muted:      #6b7165;
+      --primary:    #2e6f68;
+      --primary-fg: #ffffff;
+      --border:     rgba(26, 28, 25, 0.1);
+      --radius:     1.25rem;
     }
 
     html, body {
@@ -33,7 +30,7 @@
       min-height: 100dvh;
     }
 
-    /* ── Layout — mirrors app's max-w-md single-column ── */
+    /* ── Layout ── */
     .page {
       max-width: 448px;
       margin: 0 auto;
@@ -42,7 +39,7 @@
       min-height: 100dvh;
     }
 
-    /* ── Header — pixel-matched to app header ── */
+    /* ── Header ── */
     header {
       display: flex;
       align-items: center;
@@ -59,7 +56,7 @@
     .logo-img {
       width: 24px; height: 24px;
       border-radius: 6px;
-      background: linear-gradient(135deg, var(--accent), oklch(0.65 0.15 60));
+      background: linear-gradient(135deg, var(--primary), #1d4e49);
       flex-shrink: 0;
     }
     .logo-name {
@@ -90,6 +87,7 @@
       text-decoration: none;
       box-shadow: 0 0 0 1px var(--border);
     }
+    .gh-btn:hover { background: var(--surface); }
 
     /* ── Main content ── */
     main {
@@ -115,7 +113,7 @@
       line-height: 1.65;
     }
 
-    /* ── Download button — matches app's primary rounded-full CTA ── */
+    /* ── Download button ── */
     .dl-btn {
       display: inline-flex;
       align-items: center;
@@ -127,23 +125,21 @@
       font-size: 0.875rem;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 2px 12px oklch(0 0 0 / 0.3);
       transition: filter 0.15s ease;
       align-self: flex-start;
     }
-    .dl-btn:hover { filter: brightness(0.92); }
-    .dl-btn svg { flex-shrink: 0; }
+    .dl-btn:hover { filter: brightness(0.9); }
     .dl-meta {
       font-size: 0.6875rem;
       color: var(--muted);
-      letter-spacing: 0.02em;
+      margin-top: 10px;
     }
 
-    /* ── Windows only notice ── */
+    /* ── Windows notice ── */
     .os-notice {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: var(--card);
       border-radius: var(--radius);
       padding: 14px 18px;
@@ -153,7 +149,7 @@
     .os-notice p { font-size: 0.8125rem; color: var(--muted); line-height: 1.5; }
     .os-notice p strong { color: var(--fg); }
 
-    /* ── Section label — matches app's uppercase tracking labels ── */
+    /* ── Section label ── */
     .section-label {
       font-size: 0.625rem;
       font-weight: 700;
@@ -163,16 +159,12 @@
       margin-bottom: 10px;
     }
 
-    /* ── Feature chips — like the mode toggle chips in the app ── */
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    /* ── Chips ── */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       background: var(--card);
       border-radius: 9999px;
       padding: 6px 12px;
@@ -183,11 +175,11 @@
     .chip-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--primary);
       flex-shrink: 0;
     }
 
-    /* ── Cards — bg-card ring-1 ring-border rounded-2xl ── */
+    /* ── Card ── */
     .card {
       background: var(--card);
       border-radius: calc(var(--radius) - 4px);
@@ -195,7 +187,7 @@
       overflow: hidden;
     }
 
-    /* ── Install steps ── */
+    /* ── Steps ── */
     .step {
       display: flex;
       align-items: flex-start;
@@ -216,19 +208,11 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .step p {
-      font-size: 0.8125rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .step p { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
     .step p strong { color: var(--fg); }
 
     /* ── Requirements ── */
-    .req-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; }
     .req-item {
       padding: 12px 18px;
       border-right: 1px solid var(--border);
@@ -244,10 +228,7 @@
       color: var(--muted);
       margin-bottom: 3px;
     }
-    .req-val {
-      font-size: 0.8125rem;
-      font-weight: 500;
-    }
+    .req-val { font-size: 0.8125rem; font-weight: 500; }
 
     /* ── Footer ── */
     footer {
@@ -266,7 +247,6 @@
 <body>
 <div class="page">
 
-  <!-- Header -->
   <header>
     <a class="logo-group" href="#">
       <div class="logo-img"></div>
@@ -281,37 +261,28 @@
     </a>
   </header>
 
-  <!-- Main -->
   <main>
 
-    <!-- Hero -->
     <div class="hero">
       <h1>Speak with your mouth movements</h1>
-      <p>
-        AI lip-reading and audio processing for people with dysphonia or aphonia.
-        Predicts your words, lets you correct them, then speaks them aloud.
-        Runs fully on your device — no cloud, no subscription.
-      </p>
+      <p>AI lip-reading and audio processing for people with dysphonia or aphonia. Predicts your words, lets you correct them, then speaks them aloud. Runs fully on your device.</p>
     </div>
 
-    <!-- Download -->
     <div>
-      <a class="dl-btn" id="dl-link" href="https://github.com/KarinaMaharani/voicebox-app/releases/latest/download/VoiceBox-Setup-x64.exe">
+      <a class="dl-btn" href="https://github.com/KarinaMaharani/voicebox-app/releases/latest/download/VoiceBox-Setup-x64.exe">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
         Download for Windows
       </a>
-      <p class="dl-meta" style="margin-top:10px">v1.0.0 · Windows 10 or 11 · 64-bit · ~3 GB</p>
+      <p class="dl-meta">v1.0.0 · Windows 10 or 11 · 64-bit · ~3 GB</p>
     </div>
 
-    <!-- Windows only notice -->
     <div class="os-notice">
       <span class="os-icon">🪟</span>
       <p><strong>Windows only for now.</strong> macOS and Linux builds are planned. Star the repo to get notified.</p>
     </div>
 
-    <!-- What you get -->
     <div>
       <div class="section-label">What you get</div>
       <div class="chips">
@@ -324,7 +295,6 @@
       </div>
     </div>
 
-    <!-- Install -->
     <div>
       <div class="section-label">Install</div>
       <div class="card">
@@ -347,7 +317,6 @@
       </div>
     </div>
 
-    <!-- Requirements -->
     <div>
       <div class="section-label">Requirements</div>
       <div class="card">
@@ -374,7 +343,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <span>Free &amp; open source</span>
     <a href="https://github.com/KarinaMaharani/voicebox-app" target="_blank" rel="noopener">KarinaMaharani/voicebox-app ↗</a>
