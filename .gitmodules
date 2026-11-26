@@ -1,0 +1,8 @@
+[submodule "voicebox-be"]
+	path = voicebox-be
+	url = https://github.com/KarinaMaharani/voicebox-be.git
+	branch = main
+[submodule "voicebox"]
+	path = voicebox
+	url = https://github.com/KarinaMaharani/voicebox-fe.git
+	branch = feat/connect-be

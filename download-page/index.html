@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceBox — Download</title>
+  <meta name="description" content="AI lip-reading and speech restoration for people with dysphonia or aphonia. Free download for Windows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #f4eddf;
+      --card:       #ffffff;
+      --surface:    #ede6d4;
+      --fg:         #1a1c19;
+      --muted:      #6b7165;
+      --primary:    #2e6f68;
+      --primary-fg: #ffffff;
+      --border:     rgba(26, 28, 25, 0.1);
+      --radius:     1.25rem;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 448px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 24px 12px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--fg);
+    }
+    .logo-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+    .logo-badge {
+      background: var(--surface);
+      color: var(--muted);
+      border-radius: 9999px;
+      padding: 2px 8px;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .gh-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      color: var(--fg);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .gh-btn:hover { background: var(--surface); }
+
+    /* ── Main content ── */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 24px 40px;
+      flex: 1;
+    }
+
+    /* ── Hero ── */
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Download button ── */
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: var(--primary-fg);
+      border-radius: 9999px;
+      padding: 12px 22px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: filter 0.15s ease;
+      align-self: flex-start;
+    }
+    .dl-btn:hover { filter: brightness(0.9); }
+    .dl-meta {
+      font-size: 0.6875rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* ── Windows notice ── */
+    .os-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .os-icon { display: flex; flex-shrink: 0; color: var(--primary); }
+    .os-notice p { font-size: 0.8125rem; color: var(--muted); line-height: 1.5; }
+    .os-notice p strong { color: var(--fg); }
+
+    /* ── About / explainer ── */
+    .about p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Canva embed ── */
+    .canva-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
+    }
+    .canva-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .canva-credit {
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+    .canva-credit a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .canva-credit a:hover { color: var(--fg); }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* ── Chips ── */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border-radius: calc(var(--radius) - 4px);
+      box-shadow: 0 0 0 1px var(--border);
+      overflow: hidden;
+    }
+
+    /* ── Steps ── */
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #2e6f68;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step p { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+    .step p strong { color: var(--fg); }
+
+    /* ── Requirements ── */
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .req-item {
+      padding: 12px 18px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .req-item:nth-child(2n) { border-right: none; }
+    .req-item:nth-last-child(-n+2) { border-bottom: none; }
+    .req-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .req-val { font-size: 0.8125rem; font-weight: 500; }
+
+    /* ── Contact note ── */
+    .contact-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 4px;
+    }
+    .contact-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .contact-note a:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <a class="logo-group" href="#">
+      <span class="logo-name">VoiceBox</span>
+      <span class="logo-badge">Download Page</span>
+    </a>
+    <a class="gh-btn" href="https://github.com/KarinaMaharani/voicebox-app" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49l-.01-1.71c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85.004 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+      </svg>
+      GitHub
+    </a>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <h1>Speak with your mouth movements</h1>
+      <p>Multimodal AI-powered lip reading tool for people with dysphonia or aphonia. Predicts your words, lets you correct them, then speaks them aloud. Runs fully on your device. No internet required.</p>
+    </div>
+
+    <div>
+      <a class="dl-btn" href="https://github.com/KarinaMaharani/voicebox-app/releases/latest/download/VoiceBox-Setup-x64.exe">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download for Windows
+      </a>
+      <p class="dl-meta">v1.0.0 · Windows 10 or 11 · 64-bit · ~3 GB</p>
+    </div>
+
+    <div class="os-notice">
+      <span class="os-icon">
+        <svg width="20" height="20" viewBox="0 0 452.986 452.986" fill="currentColor" aria-hidden="true">
+          <path d="M165.265,53.107L21.689,81.753v132.531l143.575-2.416V53.107 M431.297,245.583l-233.18-3.991v164.822l233.18,46.571V245.583 M165.265,241.097l-143.575-2.438v132.509l143.575,28.668V241.097 M431.297,0l-233.18,46.528v164.822l233.18-3.969V0"/>
+        </svg>
+      </span>
+      <p><strong>Windows only for now.</strong> macOS and Linux builds are planned. Star the repo to get notified.</p>
+    </div>
+
+    <div class="about">
+      <div class="section-label">About the project</div>
+      <p>VoiceBox watches your lip movements and listens to your speech (no matter how limited it is), uses AI to reconstruct the words you're trying to say. We believe every word should be heard.</p>
+        <div class="canva-wrap">
+          <iframe
+            loading="lazy"
+            src="https://www.canva.com/design/DAHNHIQWVP4/wPlPDdyihR80XiBHDbCiiQ/view?embed"
+            allowfullscreen="allowfullscreen"
+            allow="fullscreen"
+            title="VoiceBox — AI4A Microsoft Hackathon presentation">
+          </iframe>
+        </div>
+      <p class="canva-credit"><a href="https://www.canva.com/design/DAHNHIQWVP4/wPlPDdyihR80XiBHDbCiiQ/view?utm_content=DAHNHIQWVP4&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">VoiceBox Pitch Deck</a> by Team KANE</p>
+      <p style="margin-top:10px;font-size:0.875rem;color:var(--muted);line-height:1.7;">This project is the Indonesia Winner for Microsoft's ASEAN AI for Accessibility Hackathon 2026.</p>
+    </div>
+
+    <div>
+      <div class="section-label">What you get</div>
+      <div class="chips">
+        <span class="chip"><span class="chip-dot"></span>Visual lip-reading AI</span>
+        <span class="chip"><span class="chip-dot"></span>Optional microphone fusion</span>
+        <span class="chip"><span class="chip-dot"></span>Editable word-by-word output</span>
+        <span class="chip"><span class="chip-dot"></span>Text-to-speech playback</span>
+        <span class="chip"><span class="chip-dot"></span>Phrase history &amp; learning</span>
+        <span class="chip"><span class="chip-dot"></span>Fully offline</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Install</div>
+      <div class="card">
+        <div class="step">
+          <div class="step-num">1</div>
+          <p>Download <strong>VoiceBox-Setup-x64.exe</strong> above and run it.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p>If Windows SmartScreen appears, click <strong>More info → Run anyway</strong>. The app is not yet code-signed.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p>Launch VoiceBox from the Start menu. <strong>Allow camera access</strong> when prompted.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <p>Hit <strong>Prepare camera &amp; audio</strong>, wait for the green indicators, then start speaking.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Requirements</div>
+      <div class="card">
+        <div class="req-grid">
+          <div class="req-item">
+            <div class="req-label">OS</div>
+            <div class="req-val">Windows 10 / 11</div>
+          </div>
+          <div class="req-item">
+            <div class="req-label">RAM</div>
+            <div class="req-val">8 GB minimum</div>
+          </div>
+          <div class="req-item">
+            <div class="req-label">Camera</div>
+            <div class="req-val">Any webcam</div>
+          </div>
+          <div class="req-item">
+            <div class="req-label">Disk</div>
+            <div class="req-val">~3 GB free</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="contact-note">For further inquiries about this project, <a href="https://karinamaharani.github.io/contact" target="_blank" rel="noopener">get in touch ↗</a></p>
+
+  </main>
+
+</div>
+</body>
+</html>

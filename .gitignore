@@ -1,0 +1,92 @@
+# ---------------------------------------------------------------------------
+# Model weights - NEVER commit these
+# ---------------------------------------------------------------------------
+# GitHub rejects any single file over 100 MB. The lip-reading model is 955 MB
+# and the subword LM is 205 MB, so they cannot live in the repo at all.
+# They are published as GitHub *release assets* (2 GB per file, no total cap)
+# and fetched once on first run by voicebox-be/model_assets.py.
+#
+# Build the pack with:  scripts\pack-models.ps1
+# Full rationale:       docs/DISTRIBUTION.md
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.tflite
+
+# Downloaded/!unpacked weight cache (HF_HOME points here at runtime)
+voicebox-be/models/
+# Chaplin model assets, downloaded by its setup script
+voicebox-be/chaplin/benchmarks/
+# Output of scripts\pack-models.ps1
+dist-models/
+dist-release/
+
+# The face landmarker IS small (~3 MB) and IS required at import time, so it
+# is deliberately tracked despite the .tflite rule above.
+!voicebox-be/face_landmarker.task
+
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+electron/dist/
+voicebox-be/dist/
+voicebox-be/build/
+voicebox/dist/
+voicebox/.output/
+voicebox/.nitro/
+voicebox/.tanstack/
+*.spec
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+.venv/
+.venv311/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Runtime scratch
+voicebox-be/temp_webcam/
+voicebox-be/debug/
+voicebox-be/tmp_audio.wav
+voicebox-be/*.log
+
+# ---------------------------------------------------------------------------
+# Node
+# ---------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+.npm/
+
+# ---------------------------------------------------------------------------
+# Secrets and local config
+# ---------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ---------------------------------------------------------------------------
+# graphify knowledge-graph outputs (regenerate with: graphify, or /graphify)
+# ---------------------------------------------------------------------------
+# Pattern is "graphify-out/*" rather than "graphify-out/", because git does
+# not descend into an excluded directory, so the negation below would never
+# match.
+graphify-out/*
+
+# ...except the hand-authored doc-to-code bridge edges, which are input, not
+# output: they cannot be regenerated and scripts/apply-bridges.py needs them.
+!graphify-out/bridges.json

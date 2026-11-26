@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f4eddf;
+      color: #1a1c19;
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      user-select: none;
+      -webkit-app-region: drag;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #1a1c19;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 0.65rem;
+      color: #6b7165;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .spinner-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(46, 111, 104, 0.15);
+      border-top-color: #2e6f68;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .status {
+      font-size: 0.65rem;
+      color: #6b7165;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <span class="logo-text">VoiceBox</span>
+  <div class="tagline">Speech assistance from mouth movements</div>
+  <div class="spinner-wrap">
+    <div class="spinner"></div>
+    <span class="status">Loading AI models&hellip;</span>
+  </div>
+</body>
+</html>
