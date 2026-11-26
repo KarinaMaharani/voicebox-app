@@ -21,6 +21,7 @@
   "build": {
     "appId": "com.voicebox.app",
     "productName": "VoiceBox",
+    "directories": { "output": "release" },
     "copyright": "Copyright © 2025",
     "asar": true,
     "files": [

@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   Full release build for Windows. Run from the voicebox-app root directory.
   Backend is skipped automatically if the binary already exists.
@@ -80,7 +80,16 @@ try {
 
   Write-Host "Running electron-builder..."
   npm run build:win
-  Write-Host "Electron build successful." -ForegroundColor Green
+  # A native command's failure does not trip $ErrorActionPreference = "Stop",
+  # so without this the script printed "Build complete!" after
+  # electron-builder had failed (app.asar locked by another process).
+  if ($LASTEXITCODE -ne 0) {
+    throw "electron-builder failed (exit $LASTEXITCODE). See the error above; nothing was packaged."
+  }
+  $installer = Get-ChildItem (Join-Path $electronDir "release") -Filter "VoiceBox Setup *.exe" -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTime -Descending | Select-Object -First 1
+  if (-not $installer) { throw "electron-builder reported success but no installer exists in electron\release" }
+  Write-Host ("Electron build successful: {0} ({1:N0} MB)" -f $installer.Name, ($installer.Length / 1MB)) -ForegroundColor Green
 } finally {
   Pop-Location
 }
@@ -88,5 +97,5 @@ try {
 Write-Host ""
 Write-Host "============================================" -ForegroundColor Green
 Write-Host "  Build complete!" -ForegroundColor Green
-Write-Host "  Installer: electron\dist\VoiceBox Setup *.exe" -ForegroundColor Green
+Write-Host "  Installer: electron\release\VoiceBox Setup *.exe" -ForegroundColor Green
 Write-Host "============================================" -ForegroundColor Green

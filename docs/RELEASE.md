@@ -159,12 +159,12 @@ powershell -ExecutionPolicy Bypass -File scripts\build-all-win.ps1 `
   -PythonCmd "voicebox-be\.venv311\Scripts\python.exe"
 ```
 
-Output: `electron\dist\VoiceBox Setup 1.0.0.exe`.
+Output: `electron\release\VoiceBox Setup 1.0.0.exe`.
 
 Check the size. It should be several hundred MB, not 2+ GB:
 
 ```powershell
-(Get-Item "electron\dist\VoiceBox Setup 1.0.0.exe").Length / 1MB
+(Get-Item "electron\release\VoiceBox Setup 1.0.0.exe").Length / 1MB
 ```
 
 If it is still ~2 GB the weights got bundled. Look for `chaplin\benchmarks`
@@ -180,7 +180,7 @@ work here.)
 
 ```powershell
 New-Item -ItemType Directory -Force dist-release | Out-Null
-Copy-Item "electron\dist\VoiceBox Setup 1.0.0.exe" "dist-release\VoiceBox-Setup-x64.exe"
+Copy-Item "electron\release\VoiceBox Setup 1.0.0.exe" "dist-release\VoiceBox-Setup-x64.exe"
 
 gh release create v1.0.0 "dist-release\VoiceBox-Setup-x64.exe" `
   --repo KarinaMaharani/voicebox-app `
@@ -237,6 +237,7 @@ this, so this check matters.
 | Download button 404s | Asset not named `VoiceBox-Setup-x64.exe`, or the release is a draft or pre-release (`latest` skips those) |
 | First run: "not found at ...models-v1" | Step 6 skipped, or the tag is not exactly `models-v1` |
 | First run: "checksum mismatch" | A zip was re-packed after its hash was pasted. Re-run steps 3-4 and re-publish |
+| `app.asar ... being used by another process` | Something holds a file in an old build folder (it was `Claude.exe`, the desktop app's file pane). Output now goes to a fresh `electron\release`, so it no longer matters |
 | Installer ~2.4 GB | Old `voicebox-be\dist` reused. Delete it (step 7) |
 | Login says "Cannot reach ..." | Wrong URL in `.env.local`, or the project is paused |
 | Login says 401 / invalid key | Anon key not pasted, or from a different project |

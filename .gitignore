@@ -30,6 +30,7 @@ dist-release/
 # Build output
 # ---------------------------------------------------------------------------
 electron/dist/
+electron/release/
 voicebox-be/dist/
 voicebox-be/build/
 voicebox/dist/

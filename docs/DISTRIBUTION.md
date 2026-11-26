@@ -120,7 +120,7 @@ powershell -ExecutionPolicy Bypass -File scripts\build-all-win.ps1
 # and GitHub serves an asset under its FILE NAME, so rename the file first.
 # (gh's "file#text" only sets a display label.) Full steps: docs/RELEASE.md
 New-Item -ItemType Directory -Force dist-release | Out-Null
-Copy-Item "electron\dist\VoiceBox Setup 1.0.0.exe" "dist-release\VoiceBox-Setup-x64.exe"
+Copy-Item "electron\release\VoiceBox Setup 1.0.0.exe" "dist-release\VoiceBox-Setup-x64.exe"
 gh release create v1.0.0 "dist-release\VoiceBox-Setup-x64.exe" `
   --repo KarinaMaharani/voicebox-app `
   --title "VoiceBox 1.0.0" --notes "See README for install steps."
